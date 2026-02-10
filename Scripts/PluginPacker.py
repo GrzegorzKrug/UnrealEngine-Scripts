@@ -227,9 +227,9 @@ def start(version):
 
         # ZIP_BZIP2
         # ZIP_DEFLATED # 12
-        # ZIP_LZMA  # 14
+        # ZIP_LZMA  # 14, Don't  use. Fab employe can't open it.        
         wasError = False
-        with zipfile.ZipFile(output_zip, 'w', zipfile.ZIP_LZMA) as zipf:
+        with zipfile.ZipFile(output_zip, 'w', zipfile.ZIP_DEFLATED) as zipf:
             kwargs = dict(zipfp=zipf, projectMainDir=projectMainDir)
             try:
                 walkFolder(projectMainDir, mainFolder=True, version=version, **kwargs)
