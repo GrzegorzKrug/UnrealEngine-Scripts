@@ -146,16 +146,31 @@ if __name__ == "__main__":
         X += [vals[0]]
         Y += [vals[1]]
         Z += [vals[2]]
-        if (vals[2] > 300):
-            ax.text3D(*vals, os.path.basename(file))
+        if (vals[2] > 350):
+            ax.text3D(*vals, os.path.basename(file), color=(0.7, 0, 0.3, 0.4))
 
-    ax.scatter3D(X, Y, Z)
+    X = np.array(X)
+    Y = np.array(Y)
+    Z = np.array(Z)
+
+    ax.scatter3D(X, Y, Z, marker="+", color=(0, 0, 0, 1))
+    BackAlfa = 0.6
+    ax.scatter3D(X.max(), Y, Z, marker='.', color=(0.5, 0, 0, BackAlfa))
+    ax.scatter3D(X, Y.max(), Z, marker='.', color=(0, 0.5, 0, BackAlfa))
+    ax.scatter3D(X, Y, Z * 0, marker='.', color=(0, 0, 0.5, BackAlfa))
 
     print(Total)
 
+    ax.set_xlim(X.min(), X.max()+5)
+    ax.set_ylim(Y.min(), Y.max()+5)
+    ax.set_zlim(Z.min(), Z.max()+5)
+
     ax.set_xlabel("Blank / New Lines")
-    ax.set_ylabel("Lines With braces")
-    ax.set_zlabel("Code")
-    plt.suptitle(f"Total blank: {Total[0]}, LineBraces: {Total[1]}, Code lines: {Total[2]}")
+    ax.set_ylabel("Lines with only braces")
+    ax.set_zlabel("Code lines")
+    ax.view_init(elev=20, azim=360 - 135)
+
+    plt.suptitle(
+        f"Blank lines: {Total[0]}, Lines(braces) : {Total[1]}, Lines(Code): {Total[2]}. Total: {Total.sum()}")
     # plt.tight_layout()
     plt.show()
