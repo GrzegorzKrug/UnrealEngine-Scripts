@@ -26,15 +26,19 @@ VERSIONS = [
     5.3,
     5.4,
     5.5,
-    5.6    
+    5.6,
+    5.7,
+    5.8
 ]
-VERSIONS += [-1]
+# Pack currect version without change
+# VERSIONS += [-1]
 
 EXT_WHITELIST = [
     "md",
     "cpp",
     "h",
     "cs",
+    "inl",
 
     "uplugin",  # removed to custom packing solution
     "uasset",

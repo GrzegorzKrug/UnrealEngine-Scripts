@@ -33,6 +33,7 @@ IGNOREFOLDERPATTERNS = [
 # NoCase Sens, No . Sens
 FILETYPES = [
     ".cpp",
+    ".inl",
     ". h",
     ". py"
 ]
